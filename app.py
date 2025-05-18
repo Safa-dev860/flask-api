@@ -86,6 +86,9 @@ def fetch_transactions_for_user_from_firebase(user_id):
         transactions.append(transaction)
     print(transactions)
     return transactions
+@app.route('/')
+def home():
+    return "Welcome to the Flask API"
 
 @app.route('/recommend', methods=['GET'])
 def recommend():
