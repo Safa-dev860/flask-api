@@ -63,23 +63,9 @@ def recommend_products(products, transactions, top_n=5):
 
     return top_recommendations[['id', 'name', 'category', 'price', 'description']].to_dict(orient='records')
 
-# ===============================
-# Example usage
-# ===============================
-
-
-
-# # 🔍 Recommend
-# recommendations = recommend_products(products, transactions, top_n=3)
-
-# # 🖨️ Print results
-# print("Top product recommendations:")
-# for i, product in enumerate(recommendations, 1):
-#     print(f"{i}. {product['id']} {product['name']} ({product['category']}) - {product['price']} DT")
 def fetch_products_from_firebase():
     products_ref = db.collection('Products')
-    docs = products_ref.stream()
-
+    docs = products_ref.get()  
     products = []
     for doc in docs:
         product = doc.to_dict()
@@ -88,9 +74,10 @@ def fetch_products_from_firebase():
     print(products)
     return products
 
+
 def fetch_transactions_for_user_from_firebase(user_id):
     transactions_ref = db.collection('Transactions').where('buyerId', '==', user_id)
-    docs = transactions_ref.stream()
+    docs = transactions_ref.get()  
 
     transactions = []
     for doc in docs:
