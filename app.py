@@ -8,7 +8,7 @@ import numpy as np
 import firebase_admin
 from firebase_admin import credentials, firestore
 
-cred = credentials.Certificate("sparexchange-323c8-firebase-adminsdk-fbsvc-dfed029bc9.json")
+cred = credentials.Certificate("/etc/secrets/sparexchange-323c8-firebase-adminsdk-fbsvc-dfed029bc9.json")
 firebase_admin.initialize_app(cred)
 # Get Firestore client
 db = firestore.client()
