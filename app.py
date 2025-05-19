@@ -75,7 +75,7 @@ def fetch_products_from_firebase():
 
 def fetch_transactions_for_user_from_firebase(user_id):
     try:
-        transactions_ref = db.collection('Transactions').where('userId', '==', user_id)
+        transactions_ref = db.collection('Transactions').where('buyerId', '==', user_id)
         docs = transactions_ref.get()
 
         transactions = []
