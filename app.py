@@ -200,5 +200,5 @@ def delete_user():
         return format_response(False, error=[str(e)]), 500
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 10000))  # Render sets PORT
+    port = int(os.environ.get("PORT", 5000))  # Render sets PORT
     app.run(host="0.0.0.0", port=port)
